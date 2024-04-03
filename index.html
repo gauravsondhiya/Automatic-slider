@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <div id="slides"></div>
+    <!-- <script>
+      let obj = [
+        "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
+        "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736881_640.jpg",
+        "https://cdn.pixabay.com/photo/2024/02/05/17/48/ai-generated-8554990_1280.jpg",
+      ];
+
+      let i = 0;
+      let l = obj.length;
+      let o = document.querySelector("#slides");
+      let slide = () => {
+        o.innerHTML = null;
+        if (i == l) {
+          i = 0;
+        }
+        let img = document.createElement("img");
+        img.src = obj[i];
+        document.querySelector("#slides").append(img);
+        i++;
+      };
+      document.querySelector("#start").addEventListener("click",start)
+      function start (){
+        setInterval(slide, 1000);
+      }
+      document.querySelector("#stop").addEventListener("click",stop)
+      function stop (){
+        clearInterval(slide)
+        console.log("stop")
+      }
+    </script> -->
+  
+ <script>
+     let obj = [
+  "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
+  "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736881_640.jpg",
+  "https://cdn.pixabay.com/photo/2024/02/05/17/48/ai-generated-8554990_1280.jpg",
+];
+
+let i = 0;
+let l = obj.length;
+let o = document.querySelector("#slides");
+let intervalId = null; // declare intervalId globally and initialize to null
+
+let slide = () => {
+  o.innerHTML = null;
+  if (i == l) {
+    i = 0;
+  }
+  let img = document.createElement("img");
+  img.src = obj[i];
+  document.querySelector("#slides").append(img);
+  i++;
+};
+
+document.querySelector("#start").addEventListener("click", start);
+
+function start() {
+  // Check if the interval is already running to prevent multiple interval instances
+  if (!intervalId) {
+    intervalId = setInterval(slide, 1000);
+  }
+}
+
+document.querySelector("#stop").addEventListener("click", stop);
+
+function stop() {
+  // Check if the interval is running before attempting to clear it
+  if (intervalId) {
+    clearInterval(intervalId);
+    intervalId = null; // Reset intervalId to null
+    console.log("stop");
+  }
+}
+
+ </script>
+</body>
+
+</html>
